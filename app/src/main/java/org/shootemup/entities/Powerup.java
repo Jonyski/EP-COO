@@ -25,7 +25,7 @@ public abstract class Powerup extends Entity {
 
         public static void renderEffect(Vector2D position, long timeLeft) {
             if(timeLeft > 3600) {
-                long r = (long)((4000 - timeLeft) * 1.6);
+                long r = (long)((duration - timeLeft) * 1.6);
                 GameLib.setColor(Color.WHITE);
                 GameLib.drawCircle(position.x, position.y, r);
                 r = r - 50 < 0 ? 0 : r - 50;
@@ -57,7 +57,6 @@ public abstract class Powerup extends Entity {
         }
 
         public static void renderEffect(Vector2D position, long timeLeft) {
-            System.out.println(timeLeft / duration);
             double x1 = position.x - ((double)timeLeft / (double)duration) * 24;
             double x2 = position.x + ((double)timeLeft / (double)duration) * 24;
             double y = position.y - 15;
